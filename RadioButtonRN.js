@@ -134,7 +134,7 @@ class RadioButtonRN extends React.Component {
                             activeOpacity={0.9}
                             onPress={() => this._changeRadio(item, index)}
                         >
-                            <View style={styles.leftProductBox}>
+                            <View style={item?.sublabel === 'undefined' ? styles.leftProductBoxCenter : styles.leftProductBox}>
                                 <View style={[ icon ? styles.icon : styles.circle, {
                                     borderColor: activeIndex === index ? activeColor : deactiveColor,
                                     width: circleSize + 8,
@@ -209,6 +209,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start'
+    },
+    leftProductBoxCenter: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     centerProductBox: {
         flex: 6,
