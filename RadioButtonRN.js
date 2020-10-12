@@ -116,7 +116,7 @@ class RadioButtonRN extends React.Component {
 
 	render() {
 		let { activeIndex, fadeAnim, animations } = this.state;
-        let { boxStyle, style, circleSize, textStyle, data, icon, activeColor, deactiveColor, boxActiveBgColor, boxDeactiveBgColor, box, textColor } = this.props;
+        let { boxStyle, style, circleSize, textStyle, data, icon, activeColor, deactiveColor, boxActiveBgColor, boxDeactiveBgColor, box, textColor, textStyleSubTitle } = this.props;
 
 		return (
             <View style={style}>
@@ -174,6 +174,12 @@ class RadioButtonRN extends React.Component {
                                 }, textStyle]}>
                                     {item.label}
                                 </Text>
+                                {item?.sublabel != undefined && (
+                                    <Text style={textStyleSubTitle}>
+                                        {item.sublabel}
+                                    </Text>
+                                )}
+                                
                             </View>
                         </TouchableOpacity>
                     )
@@ -191,8 +197,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 7,
         borderWidth: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 15,
+        //paddingHorizontal: 10,
+        //paddingVertical: 15,
         marginTop: 10
     },
     productBoxLess: {
@@ -202,11 +208,11 @@ const styles = StyleSheet.create({
     leftProductBox: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
     centerProductBox: {
         flex: 6,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start',
         paddingHorizontal:4
     },
@@ -233,6 +239,7 @@ RadioButtonRN.propTypes = {
 	style: PropTypes.object,
 	boxStyle: PropTypes.object,
 	textStyle: PropTypes.object,
+    textStyleSubTitle: PropTypes.object,
     initial: PropTypes.number,
     circleSize: PropTypes.number,
     duration: PropTypes.number,
@@ -253,6 +260,7 @@ RadioButtonRN.defaultProps = {
 	style: {},
 	boxStyle: {},
 	textStyle: {},
+    textStyleSubTitle: {},
     initial: -1,
     circleSize: 18,
     duration: 500,
